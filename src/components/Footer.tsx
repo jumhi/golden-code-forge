@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logo from "@/assets/shahmco-logo.png";
 
 const Footer = () => (
   <footer className="relative bg-brand-dark border-t border-brand-gold/20 pt-16 pb-8">
@@ -20,15 +21,21 @@ const Footer = () => (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
         <div>
           <div className="flex items-center gap-2 mb-4">
-            <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
-              <polygon points="14,2 26,8 26,20 14,26 2,20 2,8" stroke="#D4AF37" strokeWidth="1.5" fill="none" />
-            </svg>
+            <img src={logo} alt="SHAHMCO Digital" className="h-8 w-8 object-contain" />
             <span className="font-display text-lg text-foreground">
               SHAHMCO <span className="text-brand-gold">Digital</span>
             </span>
           </div>
           <p className="text-brand-muted text-sm font-body leading-relaxed mb-2">Where Vision Meets Code</p>
-          <p className="text-brand-muted text-xs font-body">A division of SHAHMCO Global FZC</p>
+          <p className="text-brand-muted text-xs font-body mb-3">A division of SHAHMCO Global FZC</p>
+          <a
+            href="https://shahmco.com/products"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block font-mono text-xs text-brand-gold tracking-wider hover:underline"
+          >
+            Strategic Overview →
+          </a>
         </div>
 
         <div>

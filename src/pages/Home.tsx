@@ -16,12 +16,6 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
-const services = [
-  { icon: "🌐", name: "Web Design & Development", desc: "Premium, mobile-first websites built for conversion." },
-  { icon: "⚙️", name: "Custom Software", desc: "Full-stack applications tailored to your workflows." },
-  { icon: "🤖", name: "Automation & AI Tools", desc: "Intelligent workflows that save time and money." },
-  { icon: "✦", name: "Brand & Identity", desc: "Logo, typography, and complete brand systems." },
-];
 
 const testimonials = [
   { quote: "SHAHMCO Digital delivered our platform in under 48 hours. Exceptional quality.", author: "Ahmed K., CEO" },
@@ -92,23 +86,42 @@ const Home = () => (
       </motion.div>
     </section>
 
-    {/* Services Teaser */}
+    {/* Flagship Module Callout */}
     <section className="py-24 px-6">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {services.map((s, i) => (
-          <motion.div
-            key={s.name}
-            className="glass-card p-8 gold-border-glow transition-all duration-300"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={{ ...fadeUp, visible: { ...fadeUp.visible, transition: { delay: i * 0.1, duration: 0.6 } } }}
-          >
-            <div className="text-3xl mb-4">{s.icon}</div>
-            <h3 className="font-display text-sm tracking-wider text-foreground mb-2">{s.name}</h3>
-            <p className="font-body text-sm text-brand-muted">{s.desc}</p>
-          </motion.div>
-        ))}
+      <div className="max-w-5xl mx-auto">
+        <motion.div
+          className="glass-card p-10 md:p-14 gold-border-glow relative overflow-hidden"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+        >
+          <span className="absolute -top-8 -right-4 font-display text-[10rem] font-black text-brand-gold/5 select-none leading-none">
+            01
+          </span>
+          <div className="relative z-10 max-w-3xl">
+            <p className="font-mono text-xs text-brand-gold tracking-widest uppercase mb-4">Flagship Module</p>
+            <h2 className="font-display text-3xl md:text-5xl text-foreground mb-4 leading-tight">
+              Invoicing & <span className="text-brand-gold">Document Management</span>
+            </h2>
+            <p className="font-body text-base md:text-lg text-brand-muted leading-relaxed mb-8">
+              The technical implementation of SHAHMCO's flagship invoicing system — secure document portal, PDF engine, and bulk processing for modern enterprises.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link to="/services#invoicing-module" className="btn-gold-filled">
+                Explore Technical Implementation
+              </Link>
+              <a
+                href="https://shahmco.com/products"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-gold-outline"
+              >
+                Strategic Overview
+              </a>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
 
