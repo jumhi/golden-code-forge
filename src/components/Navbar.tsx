@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import logo from "@/assets/shahmco-logo.png";
 
 const navLinks = [
   { to: "/", label: "Home" },
