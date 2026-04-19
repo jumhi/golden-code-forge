@@ -38,10 +38,7 @@ const Navbar = () => {
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-              <polygon points="14,2 26,8 26,20 14,26 2,20 2,8" stroke="#D4AF37" strokeWidth="1.5" fill="none" />
-              <polygon points="14,6 22,10 22,18 14,22 6,18 6,10" stroke="#D4AF37" strokeWidth="1" fill="none" opacity="0.5" />
-            </svg>
+            <img src={logo} alt="SHAHMCO Digital" className="h-8 w-8 object-contain" />
             <span className="font-display text-lg tracking-wider text-foreground">
               SHAHMCO <span className="text-brand-gold">Digital</span>
             </span>
