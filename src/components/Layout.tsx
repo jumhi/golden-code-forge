@@ -10,6 +10,8 @@ const Layout = () => {
 
   return (
     <div className="relative min-h-screen">
+      <div className="pixel-grid" aria-hidden />
+      <div className="pixel-dots" aria-hidden />
       <IslamicPattern />
       <CustomCursor />
       <Navbar />
