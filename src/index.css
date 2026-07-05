@@ -6,42 +6,43 @@
 
 @layer base {
   :root {
-    --background: 260 60% 4%;
-    --foreground: 262 30% 83%;
-    --card: 260 40% 9%;
-    --card-foreground: 262 30% 83%;
-    --popover: 260 40% 9%;
-    --popover-foreground: 262 30% 83%;
-    --primary: 264 56% 27%;
+    --background: 220 61% 6%;
+    --foreground: 217 70% 94%;
+    --card: 216 61% 10%;
+    --card-foreground: 217 70% 94%;
+    --popover: 216 61% 10%;
+    --popover-foreground: 217 70% 94%;
+    --primary: 218 57% 28%;
     --primary-foreground: 45 56% 52%;
-    --secondary: 262 43% 22%;
-    --secondary-foreground: 262 30% 83%;
-    --muted: 262 43% 22%;
-    --muted-foreground: 260 12% 56%;
+    --secondary: 215 48% 16%;
+    --secondary-foreground: 217 70% 94%;
+    --muted: 215 48% 16%;
+    --muted-foreground: 219 20% 62%;
     --accent: 45 56% 52%;
-    --accent-foreground: 260 60% 4%;
+    --accent-foreground: 220 61% 6%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 262 43% 22%;
-    --input: 262 43% 22%;
+    --border: 215 48% 16%;
+    --input: 215 48% 16%;
     --ring: 45 56% 52%;
     --radius: 0.5rem;
 
-    --brand-purple: 264 56% 27%;
+    --brand-purple: 218 57% 28%;
+    --brand-blue: 218 57% 28%;
     --brand-gold: 45 56% 52%;
-    --brand-dark: 260 60% 4%;
-    --brand-card: 260 40% 9%;
-    --brand-surface: 262 43% 22%;
-    --brand-body: 262 30% 83%;
-    --brand-muted: 260 12% 56%;
+    --brand-dark: 220 61% 6%;
+    --brand-card: 216 61% 10%;
+    --brand-surface: 215 48% 16%;
+    --brand-body: 217 40% 85%;
+    --brand-muted: 219 20% 62%;
 
-    --sidebar-background: 260 60% 4%;
-    --sidebar-foreground: 262 30% 83%;
-    --sidebar-primary: 264 56% 27%;
+    --sidebar-background: 220 61% 6%;
+    --sidebar-foreground: 217 70% 94%;
+    --sidebar-primary: 218 57% 28%;
     --sidebar-primary-foreground: 45 56% 52%;
-    --sidebar-accent: 262 43% 22%;
-    --sidebar-accent-foreground: 262 30% 83%;
-    --sidebar-border: 262 43% 22%;
+    --sidebar-accent: 215 48% 16%;
+    --sidebar-accent-foreground: 217 70% 94%;
+    --sidebar-border: 215 48% 16%;
     --sidebar-ring: 45 56% 52%;
   }
 }
@@ -67,7 +68,7 @@
 
 @layer components {
   .glass-card {
-    background: rgba(18, 13, 34, 0.7);
+    background: rgba(10, 22, 40, 0.7);
     border: 1px solid rgba(212, 175, 55, 0.15);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -88,7 +89,7 @@
   .btn-gold-filled {
     @apply px-8 py-3 font-mono text-sm font-semibold tracking-wider uppercase transition-all duration-300;
     background: linear-gradient(135deg, #D4AF37, #C4A030);
-    color: #0A0612;
+    color: #050B1A;
     border-radius: var(--radius);
   }
   .btn-gold-filled:hover {
@@ -106,12 +107,12 @@
   }
   .btn-gold-outline:hover {
     background: #D4AF37;
-    color: #0A0612;
+    color: #050B1A;
     box-shadow: 0 8px 30px rgba(212, 175, 55, 0.3);
   }
 
   .gold-border-glow:hover {
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.15), 0 0 40px rgba(212, 175, 55, 0.05);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2), 0 0 40px rgba(79, 195, 247, 0.08);
     border-color: rgba(212, 175, 55, 0.4);
   }
 
@@ -124,5 +125,29 @@
     pointer-events: none;
     z-index: 0;
     opacity: 0.04;
+  }
+
+  /* Futuristic white pixel grid overlay */
+  .pixel-grid {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.9), transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.9), transparent 75%);
+  }
+
+  .pixel-dots {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.18) 1px, transparent 1px);
+    background-size: 96px 96px;
+    opacity: 0.35;
   }
 }

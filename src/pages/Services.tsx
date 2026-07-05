@@ -169,7 +169,7 @@ const Services = () => (
     </section>
 
     {/* CTA */}
-    <section className="py-20 px-6" style={{ background: "linear-gradient(135deg, #3D1F6D, #1a0a3e)" }}>
+    <section className="py-20 px-6" style={{ background: "linear-gradient(135deg, #1E3A6E, #050B1A)" }}>
       <div className="max-w-3xl mx-auto text-center">
         <motion.h2 {...fadeUp()} className="font-display text-3xl md:text-4xl text-foreground mb-6">
           Ready to Build Something <span className="text-brand-gold">Premium</span>?
