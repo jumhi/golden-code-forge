@@ -67,18 +67,18 @@ const Footer = () => (
         <div>
           <h4 className="font-display text-sm tracking-wider text-brand-gold mb-4">Contact</h4>
           <a
-            href="https://wa.me/971000000000"
+            href="https://wa.me/971561520086?text=Hello%20Shahmco%20Team%2C%20I%20am%20interested%20in%20your%20services."
             target="_blank"
             rel="noopener noreferrer"
             className="block text-brand-body text-sm font-body mb-2 hover:text-brand-gold transition-colors"
           >
-            WhatsApp
+            WhatsApp +971 56 152 0086
           </a>
           <a
-            href="mailto:hello@shahmco.com"
+            href="mailto:marketing@shahmco.com"
             className="block text-brand-body text-sm font-body mb-2 hover:text-brand-gold transition-colors"
           >
-            hello@shahmco.com
+            marketing@shahmco.com
           </a>
           <p className="text-brand-muted text-sm font-body mb-2">Sharjah Free Zone, UAE</p>
           <p className="text-brand-muted text-sm font-body">Sun–Thu, 9 AM – 6 PM GST</p>
