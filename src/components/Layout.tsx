@@ -29,6 +29,7 @@ const Layout = () => {
         </motion.main>
       </AnimatePresence>
       <Footer />
+      <WhatsAppFloat />
     </div>
   );
 };
