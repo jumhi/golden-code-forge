@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import IslamicPattern from "./IslamicPattern";
 import CustomCursor from "./CustomCursor";
+import WhatsAppFloat from "./WhatsAppFloat";
 
 const Layout = () => {
   const location = useLocation();
@@ -28,6 +29,7 @@ const Layout = () => {
         </motion.main>
       </AnimatePresence>
       <Footer />
+      <WhatsAppFloat />
     </div>
   );
 };
