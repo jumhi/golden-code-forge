@@ -150,4 +150,47 @@
     background-size: 96px 96px;
     opacity: 0.35;
   }
+
+  /* Floating WhatsApp pill */
+  .wa-pill {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 60;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.35), 0 0 0 1px rgba(212, 175, 55, 0.25);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .wa-pill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 36px rgba(37, 211, 102, 0.45), 0 0 0 1px rgba(212, 175, 55, 0.5);
+  }
+  .wa-icon { display: inline-flex; }
+  .wa-pulse {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: rgba(37, 211, 102, 0.6);
+    animation: wa-pulse 2s ease-out infinite;
+    z-index: -1;
+  }
+  @keyframes wa-pulse {
+    0% { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(1.4); opacity: 0; }
+  }
+  @media (max-width: 640px) {
+    .wa-text { display: none; }
+    .wa-pill { padding: 14px; }
+  }
 }
