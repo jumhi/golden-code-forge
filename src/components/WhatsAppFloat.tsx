@@ -1,7 +1,7 @@
 const WhatsAppFloat = () => {
   return (
     <a
-      href="https://wa.me/971567878746?text=Hello%20Shahmco%20Team%2C%20I%20am%20interested%20in%20your%20services."
+      href="https://wa.me/971561520086?text=Hello%20Shahmco%20Team%2C%20I%20am%20interested%20in%20your%20services."
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with Shahmco on WhatsApp"
