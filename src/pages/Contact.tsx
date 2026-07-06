@@ -175,14 +175,14 @@ const Contact = () => {
               <h3 className="font-display text-lg text-foreground mb-4">Contact Details</h3>
               <div className="space-y-3">
                 <a
-                  href="https://wa.me/971000000000"
+                  href="https://wa.me/971561520086?text=Hello%20Shahmco%20Team%2C%20I%20am%20interested%20in%20your%20services."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block font-body text-sm text-brand-gold hover:underline"
                 >
-                  💬 WhatsApp — +971 (number to be updated)
+                  💬 WhatsApp — +971 56 152 0086
                 </a>
-                <p className="font-body text-sm text-brand-body">📧 hello@shahmco.com</p>
+                <a href="mailto:marketing@shahmco.com" className="block font-body text-sm text-brand-body hover:text-brand-gold transition-colors">📧 marketing@shahmco.com</a>
                 <p className="font-body text-sm text-brand-body">📍 Sharjah Airport International Free Zone, UAE</p>
                 <p className="font-body text-sm text-brand-muted">🕐 Sunday–Thursday, 9:00 AM – 6:00 PM GST</p>
               </div>
