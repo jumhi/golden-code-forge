@@ -1,0 +1,36 @@
+@font-face {
+  font-family: 'Bodoni Moda';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url(fonts/BodoniModa-normal-400-800.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Bodoni Moda';
+  font-style: italic;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url(fonts/BodoniModa-italic-400-800.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(fonts/Jost-var-normal.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Jost';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(fonts/Jost-var-italic.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Reem Kufi';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url(fonts/ReemKufi-arabic.woff2) format('woff2');
+  unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFC;
+}

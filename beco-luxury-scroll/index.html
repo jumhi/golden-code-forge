@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BECO — Crafting Timeless Elegance</title>
+  <meta name="description" content="BECO Building Materials — marble, ceramic, sanitary ware and cabinets, Al Rashidiya, Ajman." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-14 -14 164 164'%3E%3Crect x='-14' y='-14' width='164' height='164' fill='%230b0b0d'/%3E%3Cg transform='rotate(45 68 68)' stroke='%23c9a35c' stroke-width='10' fill='none'%3E%3Crect x='24' y='24' width='88' height='88'/%3E%3Cline x1='54.5' y1='31' x2='54.5' y2='105'/%3E%3Cline x1='81.5' y1='31' x2='81.5' y2='105'/%3E%3Cline x1='51' y1='54.5' x2='105' y2='54.5'/%3E%3Cline x1='31' y1='81.5' x2='85' y2='81.5'/%3E%3C/g%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="fonts.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ======================= NAV ======================= -->
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="#top" aria-label="BECO home">
+      <svg class="nav__mark" viewBox="-12 -12 160 160" aria-hidden="true">
+        <g transform="rotate(45 68 68)" stroke="currentColor" stroke-width="9" fill="none">
+          <rect x="24" y="24" width="88" height="88"/>
+          <line x1="54.5" y1="31" x2="54.5" y2="105"/>
+          <line x1="81.5" y1="31" x2="81.5" y2="105"/>
+          <line x1="51" y1="54.5" x2="105" y2="54.5"/>
+          <line x1="31" y1="81.5" x2="85" y2="81.5"/>
+        </g>
+      </svg>
+      <span>BECO</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#specialities" data-i18n="nav.specialities">Specialities</a>
+      <a href="#craft" data-i18n="nav.craft">Craft</a>
+      <a href="#enquire" data-i18n="nav.enquire">Enquire</a>
+    </nav>
+    <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">
+      <span data-i18n="toggleLabel">AR</span>
+    </button>
+  </header>
+
+  <main id="top">
+
+    <!-- ======================= HERO (pinned scroll-scrub) ======================= -->
+    <section class="hero" id="heroPin">
+      <canvas id="scene" class="hero__canvas" aria-hidden="true"></canvas>
+      <div class="hero__vignette" aria-hidden="true"></div>
+
+      <div class="hero__layer hero__layer--back" aria-hidden="true">
+        <span class="hero__bigword hero__bigword--1">MARBLE</span>
+        <span class="hero__bigword hero__bigword--2">CERAMIC</span>
+      </div>
+
+      <div class="hero__content">
+        <p class="eyebrow" data-i18n="hero.eyebrow">Ajman Showroom — Stone &amp; Ceramic</p>
+        <h1 class="hero__title">
+          <span class="hero__line" data-i18n="hero.titleLines.0">Crafting</span>
+          <span class="hero__line hero__line--em" data-i18n="hero.titleLines.1">Timeless Elegance</span>
+        </h1>
+        <p class="hero__sub" data-i18n="hero.sub">Marble, ceramic, sanitary ware and cabinetry — sculpted into a single, seamless surface.</p>
+        <div class="hero__actions">
+          <a class="btn btn--gold" href="#specialities" data-i18n="hero.cta1">View specialities</a>
+          <a class="btn btn--line" href="#enquire" data-i18n="hero.cta2">Enquire</a>
+        </div>
+      </div>
+
+      <div class="hero__foot">
+        <span class="hero__scroll" aria-hidden="true"><i></i><span data-i18n="hero.scroll">Scroll to reveal</span></span>
+      </div>
+    </section>
+
+    <!-- ======================= SPECIALITIES ======================= -->
+    <section class="specialities" id="specialities">
+      <div class="specialities__head" data-reveal>
+        <p class="eyebrow" data-i18n="specialities.eyebrow">Our Specialities</p>
+        <h2 class="h2" data-i18n="specialities.title">Four materials.<br /><em>One standard.</em></h2>
+      </div>
+      <ul class="pillars" id="pillars"></ul>
+    </section>
+
+    <!-- ======================= CRAFT / STATS ======================= -->
+    <section class="craft" id="craft">
+      <div class="craft__copy" data-reveal>
+        <p class="eyebrow" data-i18n="craft.eyebrow">Craft &amp; Supply</p>
+        <h2 class="h2" data-i18n="craft.title">From a single slab<br />to the <em>whole villa</em></h2>
+        <p class="craft__body" data-i18n="craft.body">Homeowners come to Al Rashidiya for one perfect piece; architects and contractors come for quantities, cutting and site delivery across the UAE.</p>
+      </div>
+      <div class="craft__stats" id="stats" data-reveal></div>
+    </section>
+
+    <!-- ======================= CTA / ENQUIRE ======================= -->
+    <section class="enquire" id="enquire">
+      <div class="enquire__inner">
+        <div class="enquire__copy" data-reveal>
+          <p class="eyebrow eyebrow--gold" data-i18n="cta.eyebrow">For Architects &amp; Designers</p>
+          <h2 class="h2 h2--light" data-i18n="cta.title">Start with a slab,<br /><em>not a sample</em></h2>
+          <p class="enquire__sub" data-i18n="cta.sub">Tell us about the project — we'll bring the material to you.</p>
+          <a class="whatsapp-link" id="whatsappLink" href="https://wa.me/971557412142" target="_blank" rel="noopener noreferrer">
+            <span data-i18n="cta.or">or</span>&nbsp;<span data-i18n="cta.whatsapp">WhatsApp us directly</span>
+          </a>
+        </div>
+
+        <form class="enquire__form" id="enquireForm" data-reveal>
+          <label>
+            <span data-i18n="cta.name">Name</span>
+            <input type="text" name="name" required autocomplete="name" />
+          </label>
+          <label>
+            <span data-i18n="cta.phone">Phone / WhatsApp</span>
+            <input type="tel" name="phone" required autocomplete="tel" dir="ltr" />
+          </label>
+          <label>
+            <span data-i18n="cta.type">Project type</span>
+            <select name="type" id="projectType"></select>
+          </label>
+          <label class="enquire__message">
+            <span data-i18n="cta.message">Message</span>
+            <textarea name="message" rows="3"></textarea>
+          </label>
+          <button class="btn btn--gold btn--wide" type="submit" data-i18n="cta.submit">Send enquiry</button>
+          <p class="enquire__note" id="formNote" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================= FOOTER ======================= -->
+  <footer class="footer">
+    <div class="footer__top">
+      <span class="footer__brand">
+        <svg class="footer__mark" viewBox="-12 -12 160 160" aria-hidden="true">
+          <g transform="rotate(45 68 68)" stroke="currentColor" stroke-width="9" fill="none">
+            <rect x="24" y="24" width="88" height="88"/>
+            <line x1="54.5" y1="31" x2="54.5" y2="105"/>
+            <line x1="81.5" y1="31" x2="81.5" y2="105"/>
+            <line x1="51" y1="54.5" x2="105" y2="54.5"/>
+            <line x1="31" y1="81.5" x2="85" y2="81.5"/>
+          </g>
+        </svg>
+        <span>BECO</span>
+      </span>
+      <span class="footer__address" data-i18n="footer.address">Al Rashidiya 3, Ajman — near Safeer Mall, UAE</span>
+      <a class="footer__phone" href="tel:+971557412142" dir="ltr">+971 55 741 2142</a>
+    </div>
+    <div class="footer__bottom">
+      <span data-i18n="footer.rights">BECO Building Materials Trading L.L.C. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="i18n.js"></script>
+  <script src="vendor/three.min.js"></script>
+  <script src="vendor/gsap.min.js"></script>
+  <script src="vendor/ScrollTrigger.min.js"></script>
+  <script src="scene.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
