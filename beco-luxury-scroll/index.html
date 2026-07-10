@@ -65,17 +65,39 @@
       </div>
     </section>
 
-    <!-- ======================= SPECIALITIES ======================= -->
-    <section class="specialities" id="specialities">
+    <!-- ======================= REEL (muted "video" + parallax) ======================= -->
+    <section class="reel" id="reel" data-reveal-section>
+      <div class="reel__frame">
+        <div class="reel__kenburns" style="background-image:url('images/storefront-wide.jpg')" aria-hidden="true"></div>
+        <div class="reel__grade" aria-hidden="true"></div>
+        <div class="reel__frag reel__frag--a" data-speed="0.35" style="background-image:url('images/frag-left.jpg')" aria-hidden="true"></div>
+        <div class="reel__frag reel__frag--b" data-speed="0.6" style="background-image:url('images/frag-mid.jpg')" aria-hidden="true"></div>
+        <div class="reel__frag reel__frag--c" data-speed="0.22" style="background-image:url('images/frag-right.jpg')" aria-hidden="true"></div>
+        <svg class="reel__doodle" viewBox="0 0 120 60" aria-hidden="true">
+          <path d="M6 44 C 30 6, 70 6, 112 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M96 20 L112 30 L98 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="reel__badge"><i class="reel__mute" aria-hidden="true"></i><span data-i18n="reel.badge">Inside the showroom</span></span>
+        <div class="reel__copy">
+          <p class="eyebrow eyebrow--gold" data-i18n="reel.eyebrow">Al Rashidiya, Ajman</p>
+          <h2 class="h2 h2--light" data-i18n="reel.title">Two floors,<br /><em>one address</em></h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= SPECIALITIES (diagonal scroll carousel) ======================= -->
+    <section class="specialities" id="specialities" data-reveal-section>
       <div class="specialities__head" data-reveal>
         <p class="eyebrow" data-i18n="specialities.eyebrow">Our Specialities</p>
         <h2 class="h2" data-i18n="specialities.title">Four materials.<br /><em>One standard.</em></h2>
       </div>
-      <ul class="pillars" id="pillars"></ul>
+      <div class="carousel" id="carousel">
+        <div class="carousel__track" id="carouselTrack"></div>
+      </div>
     </section>
 
     <!-- ======================= CRAFT / STATS ======================= -->
-    <section class="craft" id="craft">
+    <section class="craft" id="craft" data-reveal-section>
       <div class="craft__copy" data-reveal>
         <p class="eyebrow" data-i18n="craft.eyebrow">Craft &amp; Supply</p>
         <h2 class="h2" data-i18n="craft.title">From a single slab<br />to the <em>whole villa</em></h2>
@@ -85,7 +107,7 @@
     </section>
 
     <!-- ======================= CTA / ENQUIRE ======================= -->
-    <section class="enquire" id="enquire">
+    <section class="enquire" id="enquire" data-reveal-section>
       <div class="enquire__inner">
         <div class="enquire__copy" data-reveal>
           <p class="eyebrow eyebrow--gold" data-i18n="cta.eyebrow">For Architects &amp; Designers</p>
@@ -148,6 +170,7 @@
   <script src="vendor/gsap.min.js"></script>
   <script src="vendor/ScrollTrigger.min.js"></script>
   <script src="scene.js"></script>
+  <script src="products.js"></script>
   <script src="main.js"></script>
 </body>
 </html>

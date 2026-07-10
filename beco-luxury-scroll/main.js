@@ -1,5 +1,6 @@
 /* BECO — i18n rendering, language/RTL toggle, GSAP ScrollTrigger wiring,
-   reveals, and the enquiry form. */
+   the diagonal departments carousel, reel parallax, per-section entry/exit,
+   and the enquiry form. */
 (function () {
   'use strict';
 
@@ -7,33 +8,16 @@
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var currentLang = 'en';
 
-  /* ---------- icons for the four pillars (match the storefront sign) ---------- */
-  var PILLAR_ICONS = {
-    Marble: '<svg viewBox="0 0 64 64"><polygon points="13,52 21,12 51,12 43,52" fill="currentColor" opacity="0.16"/><path d="M13 52 21 12 51 12 43 52Z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M25 16 Q34 30 28 48 M35 14 Q46 28 41 50" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.7"/></svg>',
-    Ceramic: '<svg viewBox="0 0 64 64"><g transform="rotate(-6 32 32)"><rect x="12" y="12" width="18" height="18" fill="currentColor" opacity="0.85"/><rect x="34" y="12" width="18" height="18" fill="currentColor" opacity="0.25"/><rect x="12" y="34" width="18" height="18" fill="currentColor" opacity="0.45"/><rect x="34" y="34" width="18" height="18" fill="currentColor" opacity="0.85"/></g></svg>',
-    'Sanitary Ware': '<svg viewBox="0 0 64 64"><path d="M14 27 Q14 44 32 44 Q50 44 50 27" fill="none" stroke="currentColor" stroke-width="1.8"/><ellipse cx="32" cy="27" rx="18" ry="4.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M32 13 L32 6 L42 6 L42 11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="24" y1="50" x2="40" y2="50" stroke="currentColor" stroke-width="1.8"/></svg>',
-    Cabinets: '<svg viewBox="0 0 64 64"><rect x="10" y="20" width="44" height="30" fill="none" stroke="currentColor" stroke-width="1.8"/><line x1="32" y1="20" x2="32" y2="50" stroke="currentColor" stroke-width="1.4"/><rect x="27" y="32" width="2.4" height="9" fill="currentColor"/><rect x="34.6" y="32" width="2.4" height="9" fill="currentColor"/></svg>'
-  };
-  PILLAR_ICONS['رخام'] = PILLAR_ICONS.Marble;
-  PILLAR_ICONS['سيراميك'] = PILLAR_ICONS.Ceramic;
-  PILLAR_ICONS['أدوات صحية'] = PILLAR_ICONS['Sanitary Ware'];
-  PILLAR_ICONS['خزائن'] = PILLAR_ICONS.Cabinets;
+  /* sparse hand-drawn doodle accents — personality, not product representation */
+  var DOODLES = [
+    '<svg viewBox="0 0 48 48"><path d="M24 6 L27 20 L41 24 L27 28 L24 42 L21 28 L7 24 L21 20 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>',
+    '<svg viewBox="0 0 48 48"><path d="M8 26 C 8 12, 40 10, 39 25 C 38 39, 12 40, 9 30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
+    '<svg viewBox="0 0 48 48"><path d="M6 30 C 16 10, 30 10, 40 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M31 12 L40 18 L33 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    '<svg viewBox="0 0 48 48"><path d="M5 24 Q 12 14, 19 24 T 33 24 T 44 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>'
+  ];
 
   function pathGet(obj, path) {
     return path.split('.').reduce(function (o, k) { return o == null ? o : o[k]; }, obj);
-  }
-
-  /* ---------- scroll reveals (declared early — render functions below use this) ---------- */
-  var revealObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (en) {
-      if (en.isIntersecting) {
-        en.target.classList.add('is-in');
-        revealObserver.unobserve(en.target);
-      }
-    });
-  }, { threshold: 0.18, rootMargin: '0px 0px -6% 0px' });
-  function observeReveal(nodeList) {
-    nodeList.forEach(function (el) { revealObserver.observe(el); });
   }
 
   function applyStaticText(data) {
@@ -44,22 +28,25 @@
     });
   }
 
-  function renderPillars(data) {
-    var ul = document.getElementById('pillars');
-    ul.innerHTML = '';
-    data.specialities.items.forEach(function (item) {
-      var li = document.createElement('li');
-      li.className = 'pillar';
-      li.setAttribute('data-reveal', '');
-      var icon = PILLAR_ICONS[item.name] || '';
-      li.innerHTML =
-        '<span class="pillar__icon">' + icon + '</span>' +
-        '<span class="pillar__name">' + item.name + '</span>' +
-        '<span class="pillar__ar">' + item.ar + '</span>' +
-        '<span class="pillar__desc">' + item.desc + '</span>';
-      ul.appendChild(li);
+  /* ---------- departments carousel (real rendered product shots, not icons) ---------- */
+  function renderCarousel(data) {
+    var track = document.getElementById('carouselTrack');
+    track.innerHTML = '';
+    var shots = window.BECO_PRODUCT_SHOTS || {};
+    data.specialities.items.forEach(function (item, i) {
+      var card = document.createElement('div');
+      card.className = 'card';
+      var img = shots[item.key] || '';
+      card.innerHTML =
+        '<div class="card__frame">' +
+          (img ? '<img src="' + img + '" alt="' + item.name + '" loading="lazy" />' : '') +
+          '<span class="card__doodle">' + DOODLES[i % DOODLES.length] + '</span>' +
+        '</div>' +
+        '<span class="card__name">' + item.name + '</span>' +
+        '<span class="card__ar">' + item.ar + '</span>' +
+        '<span class="card__desc">' + item.desc + '</span>';
+      track.appendChild(card);
     });
-    observeReveal(ul.querySelectorAll('.pillar'));
   }
 
   function renderStats(data) {
@@ -93,7 +80,7 @@
     document.documentElement.lang = data.lang;
     document.documentElement.dir = data.dir;
     applyStaticText(data);
-    renderPillars(data);
+    renderCarousel(data);
     renderStats(data);
     renderProjectTypes(data);
     var wa = document.getElementById('whatsappLink');
@@ -119,18 +106,14 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  observeReveal(document.querySelectorAll('.specialities__head, .craft__copy, .craft__stats, .enquire__copy, .enquire__form'));
-
   /* ---------- hero: GSAP ScrollTrigger drives the 3D scrub ---------- */
   var hero = window.BECO_HERO || { update: function () {} };
+  function paintHero(progress) { hero.update(progress); }
 
-  function paintHero(progress) {
-    hero.update(progress);
-  }
+  var hasGSAP = !!(window.gsap && window.ScrollTrigger);
+  if (hasGSAP) gsap.registerPlugin(ScrollTrigger);
 
-  if (window.gsap && window.ScrollTrigger && !reduceMotion) {
-    gsap.registerPlugin(ScrollTrigger);
-
+  if (hasGSAP && !reduceMotion) {
     /* staged entrance for the title/eyebrow/sub/actions, independent of scrub */
     gsap.set(['.eyebrow', '.hero__sub', '.hero__actions', '.hero__foot'], { opacity: 0, y: 18 });
     gsap.set('.hero__line', { opacity: 0, y: '105%' });
@@ -158,10 +141,98 @@
       }
     });
   } else {
-    /* reduced motion / no GSAP: show a settled mid-scene frame, no pin */
     document.querySelectorAll('.hero__line, .eyebrow, .hero__sub, .hero__actions, .hero__foot')
       .forEach(function (el) { el.style.opacity = '1'; el.style.transform = 'none'; });
     paintHero(0.55);
+  }
+
+  /* ---------- reel: parallax fragments + entry for its copy (all transform/opacity, one ScrollTrigger per layer) ---------- */
+  if (hasGSAP && !reduceMotion) {
+    document.querySelectorAll('.reel__frag').forEach(function (frag) {
+      var speed = parseFloat(frag.getAttribute('data-speed')) || 0.4;
+      gsap.to(frag, {
+        yPercent: -28 * speed,
+        ease: 'none',
+        scrollTrigger: { trigger: '#reel', start: 'top bottom', end: 'bottom top', scrub: true }
+      });
+    });
+    gsap.fromTo('.reel__copy', { opacity: 0, y: 26 }, {
+      opacity: 1, y: 0, duration: 0.9, ease: 'power2.out',
+      scrollTrigger: { trigger: '#reel', start: 'top 65%', toggleActions: 'play reverse play reverse' }
+    });
+    gsap.fromTo('.reel__doodle', { opacity: 0, scale: 0.7, rotate: -10 }, {
+      opacity: 0.75, scale: 1, rotate: 0, duration: 0.8, ease: 'back.out(1.6)',
+      scrollTrigger: { trigger: '#reel', start: 'top 55%', toggleActions: 'play reverse play reverse' }
+    });
+  }
+
+  /* ---------- diagonal scroll carousel: track drifts on an angled axis as the section scrolls ---------- */
+  if (hasGSAP && !reduceMotion) {
+    ScrollTrigger.matchMedia({
+      '(min-width: 700px)': function () {
+        gsap.to('#carouselTrack', {
+          x: function () {
+            var track = document.getElementById('carouselTrack');
+            var wrap = document.getElementById('carousel');
+            return -(Math.max(0, track.scrollWidth - wrap.clientWidth + 80));
+          },
+          y: -46,
+          rotate: -1.1,
+          ease: 'none',
+          scrollTrigger: { trigger: '#specialities', start: 'top 80%', end: 'bottom top', scrub: 0.4 }
+        });
+      },
+      '(max-width: 699px)': function () {
+        gsap.to('#carouselTrack', {
+          x: function () {
+            var track = document.getElementById('carouselTrack');
+            var wrap = document.getElementById('carousel');
+            return -(Math.max(0, track.scrollWidth - wrap.clientWidth + 40));
+          },
+          ease: 'none',
+          scrollTrigger: { trigger: '#specialities', start: 'top 85%', end: 'bottom top', scrub: 0.4 }
+        });
+      }
+    });
+  } else if (hasGSAP) {
+    /* reduced motion: let it scroll horizontally by touch/drag instead of scroll-jacking */
+    document.getElementById('carousel').style.overflowX = 'auto';
+  }
+
+  /* ---------- entry + exit for everything else: distinct motion per section, reversible both ways ---------- */
+  function revealPass(selector, from, opts) {
+    if (!hasGSAP || reduceMotion) return;
+    document.querySelectorAll(selector).forEach(function (el) {
+      gsap.set(el, from);
+      ScrollTrigger.create({
+        trigger: el, start: 'top 85%', end: 'bottom 10%',
+        onEnter: function () { gsap.to(el, Object.assign({ duration: 0.8, ease: 'power2.out' }, opts)); },
+        onLeave: function () { gsap.to(el, { opacity: from.opacity, x: from.x || 0, y: from.y || 0, scale: from.scale || 1, duration: 0.6, ease: 'power1.in' }); },
+        onEnterBack: function () { gsap.to(el, Object.assign({ duration: 0.7, ease: 'power2.out' }, opts)); },
+        onLeaveBack: function () { gsap.to(el, { opacity: from.opacity, x: from.x || 0, y: from.y || 0, scale: from.scale || 1, duration: 0.6, ease: 'power1.in' }); }
+      });
+    });
+  }
+  revealPass('.specialities__head', { opacity: 0, y: 34 }, { opacity: 1, y: 0 });
+  revealPass('.craft__copy', { opacity: 0, x: -30 }, { opacity: 1, x: 0 });
+  revealPass('.craft__stats', { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1 });
+  revealPass('.enquire__copy', { opacity: 0, x: -30 }, { opacity: 1, x: 0 });
+  revealPass('.enquire__form', { opacity: 0, x: 30 }, { opacity: 1, x: 0 });
+
+  if (hasGSAP && !reduceMotion) {
+    document.querySelectorAll('.card').forEach(function (card, i) {
+      var fromX = i % 2 === 0 ? -24 : 24;
+      gsap.fromTo(card, { opacity: 0, x: fromX, rotate: fromX > 0 ? 3 : -3 },
+        { opacity: 1, x: 0, rotate: 0, duration: 0.7, ease: 'power2.out', delay: i * 0.06,
+          scrollTrigger: { trigger: card, start: 'top 90%', toggleActions: 'play reverse play reverse' } });
+    });
+  }
+
+  /* fallback for browsers without GSAP: show everything, no motion */
+  if (!hasGSAP) {
+    document.querySelectorAll('[data-reveal], .card').forEach(function (el) {
+      el.style.opacity = '1'; el.style.transform = 'none';
+    });
   }
 
   /* ---------- enquiry form (static demo: hands off to WhatsApp) ---------- */

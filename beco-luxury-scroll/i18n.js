@@ -14,14 +14,19 @@ window.BECO_I18N = {
       cta2: 'Enquire',
       scroll: 'Scroll to reveal'
     },
+    reel: {
+      badge: 'Inside the showroom',
+      eyebrow: 'Al Rashidiya, Ajman',
+      title: 'Two floors,<br /><em>one address</em>'
+    },
     specialities: {
       eyebrow: 'Our Specialities',
       title: 'Four materials.<br /><em>One standard.</em>',
       items: [
-        { name: 'Marble', ar: 'رخام', desc: 'Book-matched slabs, cut and edge-finished in-house.' },
-        { name: 'Ceramic', ar: 'سيراميك', desc: 'Porcelain slabs, floor and wall tiles, mosaics.' },
-        { name: 'Sanitary Ware', ar: 'أدوات صحية', desc: 'Vessel sinks, mixers and complete bathroom suites.' },
-        { name: 'Cabinets', ar: 'خزائن', desc: 'Vanities and storage, built to your dimensions.' }
+        { key: 'Marble', name: 'Marble', ar: 'رخام', desc: 'Book-matched slabs, cut and edge-finished in-house.' },
+        { key: 'Ceramic', name: 'Ceramic', ar: 'سيراميك', desc: 'Porcelain slabs, floor and wall tiles, mosaics.' },
+        { key: 'SanitaryWare', name: 'Sanitary Ware', ar: 'أدوات صحية', desc: 'Vessel sinks, mixers and complete bathroom suites.' },
+        { key: 'Cabinets', name: 'Cabinets', ar: 'خزائن', desc: 'Vanities and storage, built to your dimensions.' }
       ]
     },
     craft: {
@@ -63,14 +68,19 @@ window.BECO_I18N = {
       cta2: 'تواصل معنا',
       scroll: 'مرّر للأسفل للاستكشاف'
     },
+    reel: {
+      badge: 'داخل المعرض',
+      eyebrow: 'الراشدية، عجمان',
+      title: 'طابقان،<br /><em>عنوان واحد</em>'
+    },
     specialities: {
       eyebrow: 'تخصصاتنا',
       title: 'أربع مواد.<br /><em>معيار واحد.</em>',
       items: [
-        { name: 'رخام', ar: 'Marble', desc: 'ألواح متطابقة الأوردة، تُقطّع وتُشطّب لدينا.' },
-        { name: 'سيراميك', ar: 'Ceramic', desc: 'ألواح بورسلين، بلاط أرضيات وجدران، وموزاييك.' },
-        { name: 'أدوات صحية', ar: 'Sanitary Ware', desc: 'أحواض، خلاطات، وأطقم حمامات كاملة.' },
-        { name: 'خزائن', ar: 'Cabinets', desc: 'وحدات تخزين ومغاسل مصممة حسب مقاسك.' }
+        { key: 'Marble', name: 'رخام', ar: 'Marble', desc: 'ألواح متطابقة الأوردة، تُقطّع وتُشطّب لدينا.' },
+        { key: 'Ceramic', name: 'سيراميك', ar: 'Ceramic', desc: 'ألواح بورسلين، بلاط أرضيات وجدران، وموزاييك.' },
+        { key: 'SanitaryWare', name: 'أدوات صحية', ar: 'Sanitary Ware', desc: 'أحواض، خلاطات، وأطقم حمامات كاملة.' },
+        { key: 'Cabinets', name: 'خزائن', ar: 'Cabinets', desc: 'وحدات تخزين ومغاسل مصممة حسب مقاسك.' }
       ]
     },
     craft: {
